@@ -1,0 +1,37 @@
+CORRELATION AND REGRESSION LINES
+1.Calculate the correlation of coefficient "r" between x and y.Also find regression lines.
+x=[1,2,3,4,5,6,7]
+y=[9,8,10,12,11,13,14]
+% correlation of coefficient
+r=corrcoef(x,y)
+%regression lines:
+d=polyfit(x,y,1)
+k=polyfit(y,x,1)
+a=d(1)
+b=d(2)
+fprintf('The regression line y on x is y=%fx+%f',a,b)
+e=k(1)
+f=k(2)
+fprintf('the regression line y on x is y= %fx + %f',e,f )
+
+Rank Correlation
+Calculate the spearman's Rank correlation between A and B
+A=[14.4 7.2 27.5 33.8 38 15.9 4.9]
+B=[54 64 44 32 37 68 62]
+%rank correlation
+[rho]=corr(A',B','Type','Spearman')
+
+Curve Fitting
+x=[0 1 2 3 4]
+y=[1 1.8 1.3 2.5 2.3]
+h=polyfit(x,y,2)
+a=h(1);b=h(2);c=h(3);
+fprintf('the second degree equation is y= %fx^2 + %fx + %f',a,b,c)
+
+x=[1 3 4 6 8 9 11 14]
+y=[1 2 4 4 5 7 8 9]
+syms a b
+n= length(x)
+eq1=n*a+b*sum(x)==sum(y)
+eq2=a*sum(x)+b*sum(x.*x)==sum(x.*y)
+[A,B]=equationsToMatrix([eq1 eq2],[a,b])
